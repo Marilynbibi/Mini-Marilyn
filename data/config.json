@@ -1,0 +1,109 @@
+{
+  "welcome": {
+    "enabled": true,
+    "channelId": null,
+    "message": "ยินดีต้อนรับคุณ {user} เข้าสู่เซิร์ฟเวอร์ **{server}**! 🎉\nคุณคือสมาชิกคนที่ **{count}** ของเรา 🐶✨",
+    "embedColor": "#FFB6C1",
+    "showAvatar": true,
+    "gifUrl": "https://media.giphy.com/media/l4pT7ZzGjG0jZ9Vvy/giphy.gif"
+  },
+  "autoRole": {
+    "enabled": true,
+    "roleIds": []
+  },
+  "buttonRoles": {
+    "btn_role_1557915156627849246": {
+      "roleId": "1557915156627849246",
+      "roleName": "Member ໒꒰ྀིっ˕ -｡꒱ྀི১"
+    }
+  },
+  "1557913967916089377": {
+    "welcome": {
+      "enabled": true,
+      "channelId": "1557913969119989793",
+      "message": "<a:emoji_1:1558096117865123890> ยินดีต้องรับสู่เซิฟเวอร์ ⋆. 𐙚˚࿔ 𝑴𝒂𝒓𝒊𝒍𝒚𝒏𝜗𝜚˚⋆นะคะ<a:emoji_2:1558096152778506270>",
+      "embedColor": "#FFB6C1",
+      "showAvatar": true,
+      "gifUrl": "https://cdn.discordapp.com/ephemeral-attachments/1557910034502000722/1557912709675360266/07aaa2415e3ffdc811edf6a2fd94f312.gif?ex=6ac986c6&is=6ac83546&hm=55155c23f20059c7d3a858d1f4b129fa092a8bc5ca9c5e7466b40a192eed44f1&"
+    },
+    "goodbye": {
+      "enabled": true,
+      "channelId": "1557914774040219689",
+      "message": "ลาก่อนนะคะคุณ **{user}** หวังว่าเราจะได้พบกันใหม่อีกครั้งที่ **{server}** นะคะ 🥺👋\nตอนนี้เหลือสมาชิก **{count}** คน",
+      "embedColor": "#FFA07A",
+      "showAvatar": true,
+      "gifUrl": "https://cdn.discordapp.com/ephemeral-attachments/1557920012692365333/1557920768971776000/5153b8240acb130207e410d4a43afab4.gif?ex=6ac98e48&is=6ac83cc8&hm=78e4da51cd06ae8019e1703830a6bdb8e628a44a9ef9af212ff5ae5eadb6bbcc&"
+    },
+    "autoRole": {
+      "enabled": true,
+      "roleIds": []
+    },
+    "buttonRoles": {},
+    "socials": {
+      "tiktok": "https://www.tiktok.com/@chertamismeaniluvyou?_r=1&_t=ZS-9AOnHrYfHFt",
+      "instagram": "https://www.instagram.com/chxrlyz_0?srtk=MXNxOXprY21pdndocg%3D%3D&utm_source=qr",
+      "itchio": "https://marilynbibi.itch.io"
+    },
+    "ticket": {
+      "enabled": true,
+      "categoryId": "1557913969119989792",
+      "supportRoleId": "1557927383627997336",
+      "transcriptChannelId": null,
+      "panelChannelId": "1558132860999962695",
+      "ticketCount": 0
+    },
+    "serverStats": {
+      "enabled": true,
+      "categoryId": "1558148835056943264",
+      "allMembersChannelId": "1558148837003231272",
+      "membersChannelId": "1558148839016497266",
+      "botsChannelId": "1558148850047524996",
+      "allMembersFormat": "♬⋆.˚ All Members : {count}",
+      "membersFormat": "𓏲 ๋࣭  ࣪ ˖ Members : {count}",
+      "botsFormat": "Ი⑅𐑼 Bots : {count}"
+    },
+    "gender": {
+      "enabled": true,
+      "maleRoleId": "1558153888173916302",
+      "femaleRoleId": "1558154174087168101",
+      "otherRoleId": null,
+      "exclusive": true
+    }
+  },
+  "goodbye": {
+    "enabled": true,
+    "channelId": null,
+    "message": "ลาก่อนนะคะคุณ **{user}** หวังว่าเราจะได้พบกันใหม่อีกครั้งที่ **{server}** นะคะ 🥺👋\nตอนนี้เหลือสมาชิก **{count}** คน",
+    "embedColor": "#FFA07A",
+    "showAvatar": true,
+    "gifUrl": "https://media.giphy.com/media/efgV24BqJ0uQz555eG/giphy.gif"
+  },
+  "1442398822515867672": {
+    "welcome": {
+      "enabled": true,
+      "channelId": null,
+      "message": "ยินดีต้อนรับคุณ {user} เข้าสู่เซิร์ฟเวอร์ **{server}**! 🎉\nคุณคือสมาชิกคนที่ **{count}** ของเรา 🐶✨",
+      "embedColor": "#FFB6C1",
+      "showAvatar": true,
+      "gifUrl": "https://media.giphy.com/media/l4pT7ZzGjG0jZ9Vvy/giphy.gif"
+    },
+    "goodbye": {
+      "enabled": true,
+      "channelId": null,
+      "message": "ลาก่อนนะคะคุณ **{user}** หวังว่าเราจะได้พบกันใหม่อีกครั้งที่ **{server}** นะคะ 🥺👋\nตอนนี้เหลือสมาชิก **{count}** คน",
+      "embedColor": "#FFA07A",
+      "showAvatar": true,
+      "gifUrl": "https://media.giphy.com/media/efgV24BqJ0uQz555eG/giphy.gif"
+    },
+    "autoRole": {
+      "enabled": true,
+      "roleIds": []
+    },
+    "buttonRoles": {
+      "btn_role_1557915156627849246": {
+        "roleId": "1557915156627849246",
+        "roleName": "Member ໒꒰ྀིっ˕ -｡꒱ྀི১"
+      }
+    }
+  }
+}

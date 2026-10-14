@@ -1,0 +1,15 @@
+{
+  "name": "mini-marilyn-bot",
+  "version": "1.0.0",
+  "description": "Discord Bot mini marilyn for ดิสหมาๆ server",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.7"
+  }
+}

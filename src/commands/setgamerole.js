@@ -1,0 +1,229 @@
+import { 
+  SlashCommandBuilder, 
+  PermissionFlagsBits, 
+  ChannelType, 
+  EmbedBuilder, 
+  ActionRowBuilder, 
+  ButtonBuilder, 
+  ButtonStyle,
+  StringSelectMenuBuilder,
+  StringSelectMenuOptionBuilder
+} from 'discord.js';
+
+export function getGameEmoji(roleName) {
+  const lower = roleName.toLowerCase();
+  if (lower.includes('val') || lower.includes('วาโล')) return '🎯';
+  if (lower.includes('roblox') || lower.includes('โรบล็อก')) return '🧱';
+  if (lower.includes('mine') || lower.includes('คราฟ')) return '⛏️';
+  if (lower.includes('genshin') || lower.includes('เกนชิน')) return '✨';
+  if (lower.includes('honkai') || lower.includes('star rail') || lower.includes('ฮงไก') || lower.includes('รางดาว')) return '🚂';
+  if (lower.includes('rov') || lower.includes('aov') || lower.includes('อาโอวี')) return '⚔️';
+  if (lower.includes('pubg') || lower.includes('พับจี')) return '🪂';
+  if (lower.includes('free fire') || lower.includes('ฟีฟาย')) return '🔥';
+  if (lower.includes('lol') || lower.includes('league') || lower.includes('ลอล')) return '🏆';
+  if (lower.includes('idv') || lower.includes('identity') || lower.includes('ไอเดน')) return '👁️';
+  if (lower.includes('gta') || lower.includes('fivem')) return '🚗';
+  if (lower.includes('apex') || lower.includes('เอเปก')) return '⚡';
+  if (lower.includes('overwatch') || lower.includes('โอเวอร์')) return '🛡️';
+  if (lower.includes('dead by daylight') || lower.includes('dbd')) return '🩸';
+  if (lower.includes('fifa') || lower.includes('fc') || lower.includes('ฟุตบอล') || lower.includes('บอล')) return '⚽';
+  if (lower.includes('party') || lower.includes('fall guys') || lower.includes('สัตว์')) return '🐾';
+  return '🎮';
+}
+
+export const data = new SlashCommandBuilder()
+  .setName('setgamerole')
+  .setDescription('สร้างแผงปุ่ม/เมนูดรอปดาวน์สำหรับกดยศเกม (Game Roles Panel)')
+  .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+  .addRoleOption(opt => opt.setName('game_1').setDescription('เลือกยศเกมที่ 1').setRequired(true))
+  .addRoleOption(opt => opt.setName('game_2').setDescription('เลือกยศเกมที่ 2').setRequired(false))
+  .addRoleOption(opt => opt.setName('game_3').setDescription('เลือกยศเกมที่ 3').setRequired(false))
+  .addRoleOption(opt => opt.setName('game_4').setDescription('เลือกยศเกมที่ 4').setRequired(false))
+  .addRoleOption(opt => opt.setName('game_5').setDescription('เลือกยศเกมที่ 5').setRequired(false))
+  .addRoleOption(opt => opt.setName('game_6').setDescription('เลือกยศเกมที่ 6').setRequired(false))
+  .addRoleOption(opt => opt.setName('game_7').setDescription('เลือกยศเกมที่ 7').setRequired(false))
+  .addRoleOption(opt => opt.setName('game_8').setDescription('เลือกยศเกมที่ 8').setRequired(false))
+  .addRoleOption(opt => opt.setName('game_9').setDescription('เลือกยศเกมที่ 9').setRequired(false))
+  .addRoleOption(opt => opt.setName('game_10').setDescription('เลือกยศเกมที่ 10').setRequired(false))
+  .addStringOption(opt =>
+    opt.setName('style')
+      .setDescription('รูปแบบแสดงผล (ปุ่มกด หรือ เมนูดรอปดาวน์)')
+      .setRequired(false)
+      .addChoices(
+        { name: '🔘 ปุ่มกดแยกแต่ละเกม (Buttons) - น่ารัก กดสะดวก', value: 'buttons' },
+        { name: '📜 เมนูดรอปดาวน์ (Select Menu) - เลือกหลายเกมในเมนูเดียว', value: 'dropdown' }
+      )
+  )
+  .addChannelOption(opt =>
+    opt.setName('channel')
+      .setDescription('ห้องที่ต้องการส่งแผงกดยศเกม (หากไม่ระบุจะส่งห้องนี้)')
+      .addChannelTypes(ChannelType.GuildText)
+      .setRequired(false)
+  )
+  .addStringOption(opt =>
+    opt.setName('title')
+      .setDescription('หัวข้อการ์ด (เช่น: 🎮 เลือกเกมที่คุณเล่น / Game Roles)')
+      .setRequired(false)
+  )
+  .addStringOption(opt =>
+    opt.setName('description')
+      .setDescription('คำอธิบายบนการ์ด (ใช้ \\n ขึ้นบรรทัดใหม่ได้)')
+      .setRequired(false)
+  )
+  .addStringOption(opt =>
+    opt.setName('color')
+      .setDescription('รหัสสี Hex ของการ์ด (เช่น: #FFB6C1)')
+      .setRequired(false)
+  )
+  .addAttachmentOption(opt =>
+    opt.setName('image_file')
+      .setDescription('อัปโหลดรูปภาพ หรือ GIF ประกอบการ์ดจากเครื่อง')
+      .setRequired(false)
+  )
+  .addStringOption(opt =>
+    opt.setName('image_url')
+      .setDescription('หรือใส่ลิงก์รูปภาพ / GIF (ไม่บังคับ)')
+      .setRequired(false)
+  );
+
+export async function execute(interaction) {
+  await interaction.deferReply({ flags: 64 });
+
+  const rawRoles = [
+    interaction.options.getRole('game_1'),
+    interaction.options.getRole('game_2'),
+    interaction.options.getRole('game_3'),
+    interaction.options.getRole('game_4'),
+    interaction.options.getRole('game_5'),
+    interaction.options.getRole('game_6'),
+    interaction.options.getRole('game_7'),
+    interaction.options.getRole('game_8'),
+    interaction.options.getRole('game_9'),
+    interaction.options.getRole('game_10'),
+  ].filter(Boolean);
+
+  // Remove duplicate roles if any
+  const roles = [];
+  const seenIds = new Set();
+  for (const r of rawRoles) {
+    if (!seenIds.has(r.id)) {
+      seenIds.add(r.id);
+      roles.push(r);
+    }
+  }
+
+  if (roles.length === 0) {
+    return interaction.editReply({
+      content: '⚠️ กรุณาระบุยศเกมอย่างน้อย 1 ยศค่ะ'
+    });
+  }
+
+  // Check role hierarchy with bot
+  const botMember = interaction.guild.members.me;
+  const higherRoles = roles.filter(r => r.position >= botMember.roles.highest.position);
+
+  if (higherRoles.length > 0) {
+    const names = higherRoles.map(r => `**${r.name}**`).join(', ');
+    return interaction.editReply({
+      content: `❌ บอทไม่สามารถจัดการยศ ${names} ได้ เนื่องจากยศนี้อยู่สูงกว่าหรือเท่ากับยศของบอท\nโปรดไปที่ **Server Settings > Roles** แล้วลากยศของ mini marilyn ให้อยู่เหนือยศดังกล่าว แล้วลองใหม่อีกครั้งนะคะ`
+    });
+  }
+
+  const targetChannel = interaction.options.getChannel('channel') || interaction.channel;
+  const style = interaction.options.getString('style') || 'buttons';
+  const title = interaction.options.getString('title') || '🎮 เลือกเกมที่คุณเล่น / Game Roles';
+  const description = (interaction.options.getString('description') ||
+    'ยินดีต้อนรับเหล่านักเล่นเกมทุกคนค่ะ! 🕹️✨\n' +
+    'โปรดเลือกยศเกมที่คุณเล่นด้านล่าง เพื่อรับการแจ้งเตือนเวลาเพื่อนๆ ชวนเล่น หรือหาตี้เล่นเกมด้วยกันนะคะ 💖\n' +
+    '*(สามารถกดรับได้หลายเกม และกดยกเลิกได้ตลอดเวลาค่ะ)*')
+    .replace(/\\n/g, '\n');
+
+  const color = interaction.options.getString('color') || '#FFB6C1';
+  const imageFile = interaction.options.getAttachment('image_file');
+  const imageUrl = interaction.options.getString('image_url');
+
+  // Build Embed
+  const embed = new EmbedBuilder()
+    .setColor(color.startsWith('#') ? color : '#FFB6C1')
+    .setTitle(title)
+    .setDescription(description)
+    .setAuthor({
+      name: `${interaction.guild.name} • ระบบยศเกม`,
+      iconURL: interaction.guild.iconURL({ dynamic: true }) || interaction.client.user.displayAvatarURL()
+    })
+    .setFooter({
+      text: `mini marilyn • Game Roles System 🎮`,
+      iconURL: interaction.client.user.displayAvatarURL()
+    })
+    .setTimestamp();
+
+  // Show list of games in embed
+  const roleListText = roles.map(r => `${getGameEmoji(r.name)} <@&${r.id}>`).join('\n');
+  embed.addFields({
+    name: '🎯 รายชื่อเกมที่มีให้เลือก:',
+    value: roleListText
+  });
+
+  if (imageFile) {
+    embed.setImage(imageFile.url);
+  } else if (imageUrl && (imageUrl.startsWith('http://') || imageUrl.startsWith('https://'))) {
+    embed.setImage(imageUrl);
+  }
+
+  const components = [];
+
+  if (style === 'dropdown') {
+    // Dropdown Select Menu
+    const selectMenu = new StringSelectMenuBuilder()
+      .setCustomId('select_game_roles')
+      .setPlaceholder('🎮 คลิกเพื่อเลือกยศเกมที่คุณเล่น (เลือกได้หลายเกม)...')
+      .setMinValues(0)
+      .setMaxValues(roles.length);
+
+    roles.forEach(r => {
+      selectMenu.addOptions(
+        new StringSelectMenuOptionBuilder()
+          .setLabel(r.name.slice(0, 100))
+          .setValue(r.id)
+          .setEmoji(getGameEmoji(r.name))
+          .setDescription(`กดยศสำหรับเกม ${r.name.slice(0, 70)}`)
+      );
+    });
+
+    components.push(new ActionRowBuilder().addComponents(selectMenu));
+  } else {
+    // Buttons (up to 5 buttons per row)
+    let currentRow = new ActionRowBuilder();
+
+    roles.forEach((r, idx) => {
+      if (currentRow.components.length === 5) {
+        components.push(currentRow);
+        currentRow = new ActionRowBuilder();
+      }
+
+      currentRow.addComponents(
+        new ButtonBuilder()
+          .setCustomId(`btn_game_${r.id}`)
+          .setLabel(r.name.slice(0, 40))
+          .setEmoji(getGameEmoji(r.name))
+          .setStyle(ButtonStyle.Secondary)
+      );
+    });
+
+    if (currentRow.components.length > 0) {
+      components.push(currentRow);
+    }
+  }
+
+  try {
+    await targetChannel.send({ embeds: [embed], components });
+    await interaction.editReply({
+      content: `✅ สร้างแผงกดยศเกมเรียบร้อยแล้วค่ะ! ส่งไปยังห้อง <#${targetChannel.id}> 🎮🎀`
+    });
+  } catch (error) {
+    console.error('Error sending game roles panel:', error);
+    await interaction.editReply({
+      content: `❌ เกิดข้อผิดพลาดในการส่งแผงยศเกม: ${error.message}`
+    });
+  }
+}
